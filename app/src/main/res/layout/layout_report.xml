@@ -2,30 +2,21 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/dateTransaction"
-        android:layout_width="0dp"
+    <include
+        layout="@layout/layout_report_header"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:textSize="20sp" />
+        android:id="@+id/totalAmountView" />
 
-    <TextView
-        android:id="@+id/transactionValue"
-        android:layout_width="0dp"
+    <Button
+        android:id="@+id/createTransactionButton"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:textAlignment="center"
-        android:textSize="20sp" />
-
-    <TextView
-        android:id="@+id/transactionType"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:textAlignment="center"
-        android:textSize="20sp" />
-
+        android:text="@string/transaction_button"
+        android:layout_gravity="bottom"
+        android:layout_alignParentBottom="true"/>
 </LinearLayout>
