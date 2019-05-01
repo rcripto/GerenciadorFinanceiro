@@ -28,7 +28,7 @@
     </ListView>
 
     <include
-        layout="@layout/layout_report_header"
+        layout="@layout/layout_report"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/createTransactionAndTotalView"
