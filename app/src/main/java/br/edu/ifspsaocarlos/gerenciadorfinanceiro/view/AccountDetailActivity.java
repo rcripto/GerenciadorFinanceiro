@@ -8,10 +8,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import br.edu.ifspsaocarlos.gerenciadorfinanceiro.R;
 import br.edu.ifspsaocarlos.gerenciadorfinanceiro.adapter.AccountDetailListAdapter;
 import br.edu.ifspsaocarlos.gerenciadorfinanceiro.model.Transaction;
@@ -42,13 +40,13 @@ public class AccountDetailActivity extends AppCompatActivity implements AdapterV
         accountListTransactionsArray = new ArrayList<>();
         accountListTransactionsArray = account.getTransactions();
 
-        accountDetailListAdapter = new AccountDetailListAdapter(this,accountListTransactionsArray);
+        accountDetailListAdapter = new AccountDetailListAdapter(this, accountListTransactionsArray);
         accountDetailListView.setAdapter(accountDetailListAdapter);
 
         // setting spinner to show the bank statement
         statementType = findViewById(R.id.selectStatementTypeSpinner);
-        String[] expensesType = {"Por período","Por natureza","Por tipo"};
-        ArrayAdapter<String> spinnerExpenseType = new ArrayAdapter<>(this,R.layout.spinner,expensesType);
+        String[] expensesType = {"Período", "Natureza", "Tipo"};
+        ArrayAdapter<String> spinnerExpenseType = new ArrayAdapter<>(this, R.layout.spinner, expensesType);
         spinnerExpenseType.setDropDownViewResource(R.layout.spinner);
         statementType.setAdapter(spinnerExpenseType);
         statementType.setOnItemSelectedListener(this);
@@ -56,6 +54,7 @@ public class AccountDetailActivity extends AppCompatActivity implements AdapterV
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
         switch (position) {
             case 0:
                 accountDetailListAdapter = new AccountDetailListAdapter(this,accountListTransactionsArray);
@@ -84,23 +83,27 @@ public class AccountDetailActivity extends AppCompatActivity implements AdapterV
                 List<Transaction> entretenimentoArray = new ArrayList<>();
                 List<Transaction> outrosArray = new ArrayList<>();
                 List<Transaction> noTypeArray = new ArrayList<>();
+
                 for (Transaction tr : accountListTransactionsArray) {
-                    if (tr.getTransactionType().equals("Alimentação")) {
-                        alimentacaoArray.add(tr);
-                    } else
-                    if (tr.getTransactionType().equals("Moradia")) {
-                        moradiaArray.add(tr);
-                    } else
-                    if (tr.getTransactionType().equals("Transporte")) {
-                        transporteArray.add(tr);
-                    } else
-                    if (tr.getTransactionType().equals("Entretenimento")) {
-                        entretenimentoArray.add(tr);
-                    } else
-                    if (tr.getTransactionType().equals("Outros")) {
-                        outrosArray.add(tr);
-                    } else {
-                        noTypeArray.add(tr);
+                    switch (tr.getTransactionType()) {
+                        case "Alimentação":
+                            alimentacaoArray.add(tr);
+                            break;
+                        case "Moradia":
+                            moradiaArray.add(tr);
+                            break;
+                        case "Transporte":
+                            transporteArray.add(tr);
+                            break;
+                        case "Entretenimento":
+                            entretenimentoArray.add(tr);
+                            break;
+                        case "Outros":
+                            outrosArray.add(tr);
+                            break;
+                        default:
+                            noTypeArray.add(tr);
+                            break;
                     }
                 }
 

@@ -1,48 +1,36 @@
 package br.edu.ifspsaocarlos.gerenciadorfinanceiro.view;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Layout;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.Serializable;
 import java.lang.reflect.Type;
-import java.lang.reflect.TypeVariable;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
-
 import br.edu.ifspsaocarlos.gerenciadorfinanceiro.R;
 import br.edu.ifspsaocarlos.gerenciadorfinanceiro.adapter.AccountListAdapter;
 import br.edu.ifspsaocarlos.gerenciadorfinanceiro.model.Account;
 import br.edu.ifspsaocarlos.gerenciadorfinanceiro.model.Transaction;
 
-
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener, View.OnClickListener {
-
     private final int NEW_ACCOUNT_CODE = 0;
     private final int NEW_TRANSACTION = 1;
 
@@ -163,7 +151,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
                                 View accountCell = accountsListView.getChildAt(position);
                                 TextView amountAccount = accountCell.findViewById(R.id.amountTextView);
-                                amountAccount.setText("R$" + account.getAmount());
+
+                                double amount = Double.parseDouble(account.getAmount());
+                                DecimalFormat formatter = new DecimalFormat("#,###.00");
+                                amountAccount.setText("R$ " + formatter.format(amount));
                             }
                             position++;
                         }
@@ -180,7 +171,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         TextView totalTextView = totalView.findViewById(R.id.accountNameTextView);
         TextView amountTextView = totalView.findViewById(R.id.amountTextView);
         totalTextView.setText(R.string.total_string);
-        amountTextView.setText("R$" + totalAmount);
+
+        double amount = Double.parseDouble(totalAmount);
+        DecimalFormat formatter = new DecimalFormat("#,###.00");
+        amountTextView.setText("R$ " + formatter.format(amount));
 
         // get createButton Reference
         createTransactionButton = createButtonAndTotalView.findViewById(R.id.createTransactionButton);

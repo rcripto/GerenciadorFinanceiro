@@ -52,6 +52,7 @@ public class Account implements Serializable {
         } else {
             total = amountDouble - valueDouble;
         }
+
         this.amount = total.toString();
     }
 }

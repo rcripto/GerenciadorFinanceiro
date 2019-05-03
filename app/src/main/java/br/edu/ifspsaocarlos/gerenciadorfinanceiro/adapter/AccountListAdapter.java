@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import br.edu.ifspsaocarlos.gerenciadorfinanceiro.R;
@@ -40,7 +41,10 @@ public class AccountListAdapter extends ArrayAdapter<Account> {
         Account account = getItem(position);
 
         holder.accountNameTextView.setText(account.getName());
-        holder.amountTextView.setText("R$" + account.getAmount());
+
+        double amount = Double.parseDouble(account.getAmount());
+        DecimalFormat formatter = new DecimalFormat("#,###.00");
+        holder.amountTextView.setText("R$ " + formatter.format(amount));
 
         if ((long)Double.parseDouble(account.getAmount()) > 0) {
             holder.amountTextView.setTextColor(Color.GREEN);

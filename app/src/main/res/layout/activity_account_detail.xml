@@ -17,11 +17,12 @@
             android:layout_width="0sp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="20sp"
+            android:textSize="28sp"
             android:text="@string/statement_account_type" />
 
         <Spinner
             android:id="@+id/selectStatementTypeSpinner"
+            android:textSize="28sp"
             android:layout_width="0sp"
             android:layout_height="match_parent"
             android:layout_weight="1" />
@@ -29,6 +30,7 @@
 
     <ListView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/accountDetailListView"
+        android:textSize="28sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     </ListView>

@@ -119,18 +119,22 @@ public class TransactionActivity extends AppCompatActivity implements View.OnCli
         switch (v.getId()) {
             case R.id.credit_type:
                 v.setBackgroundColor(Color.BLUE);
+                ((Button)v).setTextColor(Color.parseColor("#FFFFFF"));
                 v.setSelected(true);
                 debitOption.setBackgroundColor(Color.LTGRAY);
                 debitOption.setSelected(false);
+                debitOption.setTextColor(Color.parseColor("#000000"));
 
                 expenseType.setVisibility(View.GONE);
 
                 break;
             case R.id.debit_type:
                 v.setBackgroundColor(Color.BLUE);
+                ((Button)v).setTextColor(Color.parseColor("#FFFFFF"));
                 v.setSelected(true);
                 creditOption.setBackgroundColor(Color.LTGRAY);
                 creditOption.setSelected(false);
+                creditOption.setTextColor(Color.parseColor("#000000"));
 
                 expenseType.setVisibility(View.VISIBLE);
 
